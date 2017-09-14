@@ -9,7 +9,7 @@ def buildLevelSettings: Seq[Setting[_]] =
   inThisBuild(
     Seq(
       organization := "org.scala-sbt",
-      version := "1.0.2-SNAPSHOT",
+      version := "1.0.1",
       description := "sbt is an interactive build tool",
       bintrayOrganization := Some("sbt"),
       bintrayRepository := {
@@ -73,14 +73,13 @@ val mimaSettings = Def settings (
 )
 
 lazy val sbtRoot: Project = (project in file("."))
-  .enablePlugins(ScriptedPlugin, ScalaUnidocPlugin) // , SiteScaladocPlugin, GhpagesPlugin)
+  .enablePlugins(ScriptedPlugin, ScalaUnidocPlugin, DocsPlugin)
   .configs(Sxr.SxrConf)
   .aggregate(nonRoots: _*)
   .settings(
     buildLevelSettings,
     minimalSettings,
     Util.baseScalacOptions,
-    Docs.settings,
     Sxr.settings,
     scalacOptions += "-Ymacro-expand:none", // for both sxr and doc
     sources in sxr := {

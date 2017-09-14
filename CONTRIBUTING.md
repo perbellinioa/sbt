@@ -200,3 +200,12 @@ Building Documentation
 ======================
 
 The scala-sbt.org site documentation is a separate project [website](https://github.com/sbt/website). Follow [the steps in the README](https://github.com/sbt/website#scala-sbtorg) to generate the documentation.
+
+
+Building API docs
+=================
+
+1. Rebase wip/unidoc branch https://github.com/eed3si9n/sbt/tree/wip/unidoc on top of the target sbt version.
+2. Set the version to the target version.
+3. Check out the right versions for all modules locally, and run ./sbt-allsources.sh.
+4. ghpagesPushSite
